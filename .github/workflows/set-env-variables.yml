@@ -74,7 +74,7 @@ jobs:
           key: "${{env.BRANCH}}"
           map: |
             {
-              "development": {
+              "sandbox": {
                 "aws_infra": "SBX_aws_infra",
                 "environment": "SBX_environment",
                 "E2E_VERSION": "SBX_E2E_VERSION",
@@ -93,7 +93,7 @@ jobs:
                 "S3_BUCKET_UI_MAIN": "SBX_S3_BUCKET_UI_MAIN",
                 "S3_BUCKET_UI_SDK": "SBX_S3_BUCKET_UI_SDK"
               },
-              "sandbox": {
+              "development": {
                 "aws_infra": "DEV_aws_infra",
                 "environment": "DEV_environment",
                 "E2E_VERSION": "DEV_E2E_VERSION",
