@@ -7,8 +7,16 @@ on:
         value: ${{ jobs.set_environment_variables.outputs.aws_infra }}
       environment:
         value: ${{ jobs.set_environment_variables.outputs.environment }}
+      DOMAIN:
+        value: ${{ jobs.set_environment_variables.outputs.DOMAIN }}
+      COGNITO_USER_POOL_ID:
+        value: ${{ jobs.set_environment_variables.outputs.COGNITO_USER_POOL_ID }}
+      COGNITO_CLIENT_ID:
+        value: ${{ jobs.set_environment_variables.outputs.COGNITO_CLIENT_ID }}
       E2E_VERSION:
         value: ${{ jobs.set_environment_variables.outputs.E2E_VERSION }}
+      E2E_LOGIN_DATA_BASE64:
+        value: ${{ jobs.set_environment_variables.outputs.E2E_LOGIN_DATA_BASE64 }}
       E2E_ENABLED:
         value: ${{ jobs.set_environment_variables.outputs.E2E_ENABLED }}
       BUILD_ARTIFACTS:
@@ -45,7 +53,11 @@ jobs:
     outputs:
       aws_infra: ${{ steps.export.outputs.aws_infra }}
       environment: ${{ steps.export.outputs.environment }}
+      DOMAIN: ${{ steps.export.outputs.DOMAIN }}
+      COGNITO_USER_POOL_ID: ${{ steps.export.outputs.COGNITO_USER_POOL_ID }}
+      COGNITO_CLIENT_ID: ${{ steps.export.outputs.COGNITO_CLIENT_ID }}
       E2E_VERSION: ${{ steps.export.outputs.E2E_VERSION }}
+      E2E_LOGIN_DATA_BASE64: ${{ steps.export.outputs.E2E_LOGIN_DATA_BASE64 }}
       E2E_ENABLED: ${{ steps.export.outputs.E2E_ENABLED }}
       BUILD_ARTIFACTS: ${{ steps.export.outputs.BUILD_ARTIFACTS }}
       DEPENDENCIES_CACHE: ${{ steps.export.outputs.DEPENDENCIES_CACHE }}
@@ -77,7 +89,11 @@ jobs:
               "sandbox": {
                 "aws_infra": "SBX_aws_infra",
                 "environment": "SBX_environment",
+                "DOMAIN": "SBX_DOMAIN",
+                "COGNITO_USER_POOL_ID": "SBX_COGNITO_USER_POOL_ID",
+                "COGNITO_CLIENT_ID": "SBX_COGNITO_CLIENT_ID",
                 "E2E_VERSION": "SBX_E2E_VERSION",
+                "E2E_LOGIN_DATA_BASE64": "SBX_E2E_LOGIN_DATA_BASE64",
                 "E2E_ENABLED": "SBX_E2E_ENABLED",
                 "BUILD_ARTIFACTS": "SBX_BUILD_ARTIFACTS",
                 "DEPENDENCIES_CACHE": "SBX_DEPENDENCIES_CACHE",
@@ -96,7 +112,11 @@ jobs:
               "development": {
                 "aws_infra": "DEV_aws_infra",
                 "environment": "DEV_environment",
+                "DOMAIN": "DEV_DOMAIN",
+                "COGNITO_USER_POOL_ID": "DEV_COGNITO_USER_POOL_ID",
+                "COGNITO_CLIENT_ID": "DEV_COGNITO_CLIENT_ID",
                 "E2E_VERSION": "DEV_E2E_VERSION",
+                "E2E_LOGIN_DATA_BASE64": "DEV_E2E_LOGIN_DATA_BASE64",
                 "E2E_ENABLED": "DEV_E2E_ENABLED",
                 "BUILD_ARTIFACTS": "DEV_BUILD_ARTIFACTS",
                 "DEPENDENCIES_CACHE": "DEV_DEPENDENCIES_CACHE",
@@ -112,10 +132,37 @@ jobs:
                 "S3_BUCKET_UI_MAIN": "DEV_S3_BUCKET_UI_MAIN",
                 "S3_BUCKET_UI_SDK": "DEV_S3_BUCKET_UI_SDK"
               },
+              "master": {
+                "aws_infra": "PROD_aws_infra",
+                "environment": "PROD_environment",
+                "DOMAIN": "PROD_DOMAIN",
+                "COGNITO_USER_POOL_ID": "PROD_COGNITO_USER_POOL_ID",
+                "COGNITO_CLIENT_ID": "PROD_COGNITO_CLIENT_ID",
+                "E2E_VERSION": "PROD_E2E_VERSION",
+                "E2E_LOGIN_DATA_BASE64": "PROD_E2E_LOGIN_DATA_BASE64",
+                "E2E_ENABLED": "PROD_E2E_ENABLED",
+                "BUILD_ARTIFACTS": "PROD_BUILD_ARTIFACTS",
+                "DEPENDENCIES_CACHE": "PROD_DEPENDENCIES_CACHE",
+                "NX_CACHE": "PROD_NX_CACHE",
+                "NODE_AUTH_TOKEN": "PROD_NODE_AUTH_TOKEN",
+                "BROWSERTYPE": "PROD_BROWSERTYPE",
+                "GITHUB_TOKEN": "PROD_GITHUB_TOKEN",
+                "AWS_ACCESS_KEY_ID": "PROD_AWS_ACCESS_KEY_ID",
+                "AWS_SECRET_ACCESS_KEY": "PROD_AWS_SECRET_ACCESS_KEY",
+                "AWS_REGION": "PROD_AWS_REGION",
+                "CLOUDFRONT_DISTRIBUTION_ID": "PROD_CLOUDFRONT_DISTRIBUTION_ID",
+                "S3_BUCKET_DOCS": "PROD_S3_BUCKET_DOCS",
+                "S3_BUCKET_UI_MAIN": "PROD_S3_BUCKET_UI_MAIN",
+                "S3_BUCKET_UI_SDK": "PROD_S3_BUCKET_UI_SDK"
+              },
               ".*": {
                 "aws_infra": "SBX_aws_infra",
                 "environment": "SBX_environment",
+                "DOMAIN": "SBX_DOMAIN",
+                "COGNITO_USER_POOL_ID": "SBX_COGNITO_USER_POOL_ID",
+                "COGNITO_CLIENT_ID": "SBX_COGNITO_CLIENT_ID",
                 "E2E_VERSION": "SBX_E2E_VERSION",
+                "E2E_LOGIN_DATA_BASE64": "SBX_E2E_LOGIN_DATA_BASE64",
                 "E2E_ENABLED": "SBX_E2E_ENABLED",
                 "BUILD_ARTIFACTS": "SBX_BUILD_ARTIFACTS",
                 "DEPENDENCIES_CACHE": "SBX_DEPENDENCIES_CACHE",
